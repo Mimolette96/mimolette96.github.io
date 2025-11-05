@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Projets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="contact-page">
+  <nav>
+    <a href="Accueil.html">Accueil</a>
+    <a href="Projets.html">Projets</a>
+    <a href="Qui_suis_je.html">Qui suis-je?</a>
+    <a href="Contact.html">Prestations & Contact</a>
+  </nav>
+
+  <!-- Carrousel -->
+  <div class="projets-container">
+    <div class="texte">
+      <h1>Projets</h1>
+  <p>
+    Voici un échantillon d’images que j’ai réalisées pour différents projets : maisons individuelles, aménagements d’espaces ou encore décors éphémères.
+   </p>
+    <p> J’adapte le niveau de détail de chaque image selon les attentes de mes clients, afin de leur permettre de se projeter dans un espace futur, une nouvelle pièce, un mobilier sur mesure ou un jeu de lumière spécifique.
+  </p>
+   <p> Chaque rendu 3D est accompagné de plans techniques, essentiels à la compréhension et à la construction précise des espaces imaginés.
+  </p>
+
+    </div>
+
+    <div class="carousel-container">
+      <button class="prev">&#10094;</button>
+
+    <div class="carousel-slide">
+    <img src="image/v5.jpg" alt="V5" title="Arago">
+    <img src="image/arago.jpg" alt="Arago" title="Arago">
+    <img src="image/arago2.jpg" alt="Arago 2" title="Arago">
+    <img src="image/arago3.jpg" alt="Arago 3" title="Arago">
+    
+    <img src="image/bouffard.jpg" alt="Bouffard" title="Du Coeur à l'Ouvrage">
+    <img src="image/perse2.jpg" alt="Perse 2" title="Du Coeur à l'Ouvrage">
+    <img src="image/entree.jpg" alt="Entrée" title="Du Coeur à l'Ouvrage">
+    <img src="image/ducoeuralouvrage.png" alt="Du Coeur à l'Ouvrage" title="Du Coeur à l'Ouvrage">
+    <img src="image/le_nid_rendu_1.jpg" alt="Le Nid" title="Du Coeur à l'Ouvrage">
+    <img src="image/cgt.jpg" alt="CGT" title="Du Coeur à l'Ouvrage">
+    <img src="image/concept.jpeg" alt="Concept" title="Art Composit">
+    <img src="image/kwerk1.jpg" alt="Kwerk 1" title="Art Composit">
+    <img src="image/kwerk2.jpg" alt="Kwerk 2" title="Art Composit">
+    <img src="image/Art Composit.png" alt="Art Composit" title="Art Composit">
+    <img src="image/samaritaine.png" alt="Samaritaine" title="Art Composit">
+    <img src="image/rendu Projet V2.png" alt="Projet V2" title="Voltaire">
+    <img src="image/SALle de bain vue 1.jpg" alt="Salle de bain 1" title="Voltaire">
+    <img src="image/SALle de bain vue 4.jpg" alt="Salle de bain 4" title="Voltaire">
+    <img src="image/V1 Cuisine.jpg" alt="V1 Cuisine" title="Voltaire">
+    <img src="image/maj_perse_arrière.jpg" alt="Maison Perse Arrière" title="Verrière Le Buisson">
+    <img src="image/perspective ext.png" alt="Perspective Ext" title="Verrière Le Buisson">
+    <img src="image/verrrière le buisson.jpg" alt="Verrière Le Buisson" title="Verrière Le Buisson">
+    <img src="image/Perspective interieur avec volumétrie de meuble.png" alt="Perspective Intérieure" title="Verrière Le Buisson">
+    <img src="image/pcmi6.png" alt="PCMI6" title="La Forêt Fouesnant">
+    <img src="image/scene2.jpg" alt="Scene 2" title="La Forêt Fouesnant">
+
+  </div>
+
+      <button class="next">&#10095;</button>
+
+      <!-- Points indicateurs -->
+      <div class="carousel-dots"></div>
+    </div>
+  </div>
+<!-- ... ton HTML ici ... -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const slides = document.querySelector(".carousel-slide");
+    const images = document.querySelectorAll(".carousel-slide img");
+    const prev = document.querySelector(".prev");
+    const next = document.querySelector(".next");
+    const dotsContainer = document.querySelector(".carousel-dots");
+
+    let counter = 0;
+    const size = 100; // chaque image prend 100% du conteneur
+    let autoSlide;
+
+    // --- Création des points (•) ---
+    images.forEach((_, index) => {
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+      if (index === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => goToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll(".dot");
+
+    // --- Fonction pour mettre à jour l'affichage ---
+    function updateCarousel() {
+      slides.style.transform = `translateX(${-counter * size}%)`;
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === counter);
+      });
+    }
+
+    // --- Navigation flèches ---
+    function nextSlide() {
+      counter = (counter + 1) % images.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      counter = (counter - 1 + images.length) % images.length;
+      updateCarousel();
+    }
+
+    prev.addEventListener("click", prevSlide);
+    next.addEventListener("click", nextSlide);
+
+    // --- Navigation via points ---
+    function goToSlide(index) {
+      counter = index;
+      updateCarousel();
+    }
+
+    // --- Lecture automatique ---
+    function startAutoSlide() {
+      autoSlide = setInterval(nextSlide, 4000); // 4 secondes
+    }
+
+    function stopAutoSlide() {
+      clearInterval(autoSlide);
+    }
+
+    // Pause quand la souris survole le carrousel
+    const carouselContainer = document.querySelector(".carousel-container");
+    carouselContainer.addEventListener("mouseenter", stopAutoSlide);
+    carouselContainer.addEventListener("mouseleave", startAutoSlide);
+
+    // Démarre le défilement automatique
+    startAutoSlide();
+  });
+</script>
+
+</body>
+</html>

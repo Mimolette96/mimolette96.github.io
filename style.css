@@ -1,0 +1,299 @@
+/* ------------------ Styles globaux ------------------ */
+body {
+  font-family: sans-serif;
+  background: #f5f5f5;
+  color: #111;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: 1.8em; /* au lieu de la taille par défaut (~2em) */
+  margin-top: 15px;
+}
+
+h2 {
+  font-size: 1.3em; /* plus petit qu’un sous-titre standard */
+  margin-top: 10px;
+}
+
+/* ------------------ Paragraphes ------------------ */
+p {
+  font-size: 0.91em; /* taille légèrement réduite */
+  line-height: 1,3;  /* conserve une bonne lisibilité */
+  max-width: 200px;
+  margin: 10px auto;
+  text-align: justify;
+}
+
+/* ------------------ Navigation ------------------ */
+nav {
+  position: absolute;      
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 15px;
+  z-index: 1000;
+  background: transparent;
+}
+
+nav a {
+  text-decoration: none;
+  color: purple;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* ------------------ Titres ------------------ */
+h1, h2 {
+  margin-top: 20px;
+}
+
+/* ------------------ Paragraphes ------------------ */
+p {
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: justify;
+}
+
+/* ------------------ Liens forts sans gras ------------------ */
+a strong {
+  font-weight: normal;
+}
+
+/* ------------------ Page Accueil ------------------ */
+body.home {
+  height: 100vh;
+  background: url('image/voltaire.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+body.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.3);
+  z-index: 0;
+}
+
+.home-content {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: purple;
+}
+
+.home-content h1 {
+  font-size: 2em;
+  margin: 0.2em 0;
+}
+
+.home-content h2 {
+  font-size: 1em;
+  margin: 0.2em 0;
+}
+
+/* ------------------ Page Qui suis-je ? ------------------ */
+.qui-suis-je-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 60px auto;
+  gap: 20px;
+}
+
+.qui-suis-je-container .texte {
+  flex: 1 1 50%;
+  min-width: 300px;
+}
+
+.qui-suis-je-container .texte h1,
+.qui-suis-je-container .texte p,
+.qui-suis-je-container .texte a {
+  text-align: left;
+}
+
+.qui-suis-je-container .image {
+  flex: 1 1 45%;
+  display: flex;
+  justify-content: center;
+}
+
+.qui-suis-je-container .image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  width: 70%;
+}
+/*-----------------Pages Projets-----*/
+.projets-container {
+  display: flex;
+  flex-direction: column; /* empile texte et carrousel verticalement */
+  align-items: center;    /* centre horizontalement le bloc */
+  max-width: 1200px;
+  margin: 40px auto;
+  gap: 20px;
+}
+
+.projets-container .texte {
+  max-width: 1000px;       /* limite la largeur du paragraphe */
+  text-align: center;     /* centre le bloc pour le titre */
+}
+
+.projets-container .texte h1 {
+  text-align: center;     /* titre centré */
+  margin-bottom: 10px auto;
+}
+
+.projets-container .texte p {
+  max-width: 1000px; /* élargit le paragraphe */
+  text-align: justify;
+  margin: 0 auto 20px auto; /* garde le centrage et l’espacement */
+  line-height: 1.5; /* optionnel : améliore la lisibilité */
+}
+
+/* ------------------ Images centrées génériques ------------------ */
+p img {
+  display: block;
+  margin: 20px auto;
+  max-width: 80%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* ------------------ Nouveau Carrousel Responsive ------------------ */
+.carousel-container {
+  position: relative;
+  max-width: 900px; /* largeur max du carrousel */
+  width: 90%;       /* adaptatif sur mobile */
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* --- Conteneur des images --- */
+.carousel-slide {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+/* Chaque image prend 100% de la hauteur du conteneur */
+.carousel-slide img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: auto;
+  max-height: 50vh; /* limite la hauteur à 60% de la hauteur visible */
+  object-fit: contain; /* garde toute l’image visible sans déformation */
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+
+/* --- Boutons navigation --- */
+.carousel-container button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 5px 10px;
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+
+.carousel-container button:hover {
+  background: rgba(255,255,255,1);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* --- Points indicateurs --- */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.carousel-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #bbb;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carousel-dots .dot.active {
+  background: purple;
+}
+
+/* --- Adaptation mobile --- */
+@media (max-width: 600px) {
+  .carousel-slide img {
+    max-height: 40vh;
+  }
+
+  .carousel-container button {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* -------------------- Page Contact -------------------- */
+body.contact-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.contact-container {
+  background: #fff;
+  padding: 40px 60px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+}
+
+.contact-container h1 {
+  margin-bottom: 30px;
+  color: purple;
+}
+
+.contact-container p {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.contact-container a {
+  color: purple;
+  text-decoration: none;
+}
+
+.contact-container a:hover {
+  text-decoration: underline;
+}
