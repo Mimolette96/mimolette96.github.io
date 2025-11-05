@@ -329,11 +329,11 @@ body.contact-page {
   nav {
     position: fixed;
     top: 10px;
-    left: 50%;
+    left: 40%;
     transform: translateX(-50%);
     gap: 10px;
     flex-wrap: wrap;
-    background: rgba(255, 255, 255, 0.8);
+    background: transparent;
     padding: 5px 10px;
     border-radius: 10px;
   }
@@ -416,6 +416,7 @@ body.contact-page {
   }
 
 }
+
 
 
 
